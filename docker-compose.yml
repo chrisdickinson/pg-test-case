@@ -1,0 +1,39 @@
+# This file is provided for local development purposes only.
+# The intent is to spin up necessary database resources
+# in docker locally, then tear them down once you're done.
+#
+# To run, use `docker-compose up -d`. This will run the containers
+# in the background.
+#
+# To shut down, run `docker-compose down`.
+version: '3.1'
+services:
+# 
+  db:
+    image: postgres:10.1-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${USER}
+    networks:
+      intranet:
+        aliases:
+          - database
+
+  createdb:
+    links: [db]
+    image: jbergknoff/postgresql-client
+    entrypoint: ["createdb"]
+    command: ["-U", "postgres", "-h", "database", "pgtestcase"]
+    networks:
+      - intranet
+
+networks:
+  intranet:
+
+# 
+volumes:
+  postgres_data:
+# 

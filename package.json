@@ -1,0 +1,24 @@
+{
+  "name": "pg-test-case",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "docker-compose up -d",
+    "start": "./node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisdickinson/pg-test-case.git"
+  },
+  "author": "Chris Dickinson <chris@neversaw.us> (http://neversaw.us/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chrisdickinson/pg-test-case/issues"
+  },
+  "homepage": "https://github.com/chrisdickinson/pg-test-case#readme",
+  "dependencies": {
+    "pg": "^8",
+    "pg-query-stream": "^3.4.2"
+  }
+}
