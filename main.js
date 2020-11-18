@@ -3,8 +3,7 @@ process.env.PGURL = process.env.PGURL || 'postgres://localhost/pgtestcase'
 
 const {Pool} = require('pg')
 const QueryStream = require('pg-query-stream')
-// TODO: install honeycomb
-//
+
 async function main() {
   const pool = new Pool({ connectionString: process.env.PGURL })
   let c = await pool.connect()
